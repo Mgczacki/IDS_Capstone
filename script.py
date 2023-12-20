@@ -15,6 +15,7 @@ from sklearn.linear_model import LinearRegression
 from tqdm import tqdm
 from typing import Callable
 
+question_list = []
 
 def question(q: Callable):
     """Wrapper function for questions in order to initialize them.
@@ -26,6 +27,8 @@ def question(q: Callable):
         print(f"##### Starting {q.__name__.upper()} #####")
         np.random.seed(seed)
         q()
+
+    question_list.append(wrapped_question)
 
     return wrapped_question
 
@@ -236,4 +239,4 @@ def q10():
     pass
 
 
-q1(), q2(), q3(), q4(), q5(), q6(), q7(), q8(), q9(), q10()
+[q() for q in question_list]
