@@ -15,7 +15,7 @@ ax = plt.subplot()
 fig.suptitle("Popularity barplot for Major & Minor key songs")
 ax.bar(x=MajorPop.index, height=MajorPop, color="blue", label="Major")
 
-fig.supylabel("Probability Density")
+fig.supylabel("Probability")
 fig.supxlabel("Popularity Measure (Higher = More popular)")
 
 ax.bar(x=MinorPop.index, height=MinorPop, color="orange", label="Minor", alpha=0.8)
