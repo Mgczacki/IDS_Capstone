@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import yeojohnson
-from sklearn.linear_model import RidgeCV
+from sklearn.linear_model import RidgeCV, Ridge
 from sklearn.model_selection import train_test_split
 from QuestionFour import plotResiduals, rms_and_r2, data_prep
 
@@ -13,6 +13,7 @@ def multi_regression(X, y, transform=True, desc=""):
         for col in range(X.shape[1]):
             X[:, col] = yeojohnson(X[:, col])[0]
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+    # model = Ridge(alpha=0.0001)
     model = RidgeCV(alphas=np.logspace(-6, 6, 13))
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
